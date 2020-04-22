@@ -10887,6 +10887,11 @@ a.text-dark:focus {
   height: auto;
 }
 
+.navbar-brand .brand {
+  color: #f20a0a;
+  font-size: 1.16rem;
+}
+
 .nav-link {
   font-size: 1.12em;
 }
@@ -10900,6 +10905,15 @@ a.text-dark:focus {
 }
 
 .textmain {
+  color: #f20a0a;
+}
+
+.card-header .dashboard {
+  color: #f20a0a;
+  font-size: 1.12em;
+}
+
+.btn-log:hover {
   color: #f20a0a;
 }
 
