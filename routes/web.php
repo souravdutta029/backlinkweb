@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route for Category
 Route::resource('category', 'CategoryController');
+
+Route::resource('subcategory', 'SubcategoryController');

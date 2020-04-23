@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SubcategoryController extends Controller
 {
@@ -24,7 +26,8 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        return view('subcategory.create')->with('categories', $categories);
     }
 
     /**
@@ -35,7 +38,27 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validation
+         $request -> validate([
+            'subcategoryname' => 'required | max:255'
+        ]);
+
+        // if validation cleared
+        $subcategory = new Subcategory();
+        $subcategory->category_id = $request['category_id'];
+        $subcategory->subcat_name = $request['subcategoryname'];
+        $subcategory->subcat_slug = Str::slug($request['subcategoryname']);
+        $latestslug = subcategory::whereRaw("subcat_slug RLIKE '^{$subcategory->subcat_slug}(-[0-9]*)?$'")
+        ->latest('subcatid')
+        ->value('subcat_slug');
+        if($latestslug){
+            $pieces = explode('-', $latestslug);
+            $number = intval(end($pieces));
+            $subcategory->subcat_slug .= '-' . ($number + 1);
+        }
+        $subcategory->save();
+        return redirect('/home');
+    
     }
 
     /**
