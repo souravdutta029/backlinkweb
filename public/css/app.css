@@ -10901,7 +10901,7 @@ a.text-dark:focus {
 }
 
 .call-to-action:hover {
-  color: #06d606 !important;
+  color: #008080 !important;
 }
 
 .textmain {
@@ -10909,11 +10909,27 @@ a.text-dark:focus {
 }
 
 .card-header .dashboard {
-  color: #f20a0a;
+  color: #008080;
   font-size: 1.12em;
 }
 
 .btn-log:hover {
-  color: #f20a0a;
+  color: #008080;
+}
+
+.btn-back {
+  font-size: 1.18rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.btn-back:hover {
+  background: white;
+  color: #008080;
+}
+
+.form-group label {
+  color: #000000;
+  font-size: 1.12rem;
 }
 

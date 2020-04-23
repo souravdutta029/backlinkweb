@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\subcategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class SubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        //
     }
 
     /**
@@ -36,34 +35,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // validation
-        $request -> validate([
-            'categoryname' => 'required | max:255'
-        ]);
-
-        // if validation cleared
-        $category = new Category();
-        $category->categoryname = $request['categoryname'];
-        $category->slug = Str::slug($request['categoryname']);
-        $latestslug = Category::whereRaw("slug RLIKE '^{$category->slug}(-[0-9]*)?$'")
-        ->latest('id')
-        ->value('slug');
-        if($latestslug){
-            $pieces = explode('-', $latestslug);
-            $number = intval(end($pieces));
-            $category->slug .= '-' . ($number + 1);
-        }
-        $category->save();
-        return redirect('home');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(subcategory $subcategory)
     {
         //
     }
@@ -71,10 +52,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(subcategory $subcategory)
     {
         //
     }
@@ -83,10 +64,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, subcategory $subcategory)
     {
         //
     }
@@ -94,10 +75,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(subcategory $subcategory)
     {
         //
     }
